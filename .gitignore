@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+backend/venv/
+backend/env/
+backend/campusfind.db
+backend/test.db
+backend/uploads/*
+!backend/uploads/.gitkeep
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Environments & secrets
+.env
+*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp

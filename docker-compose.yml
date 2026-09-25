@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: campusfind_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: campusfind
+      POSTGRES_USER: campususer
+      POSTGRES_PASSWORD: campuspassword
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U campususer -d campusfind"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: campusfind_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: campusfind_backend
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=postgresql://campususer:campuspassword@postgres:5432/campusfind
+      - SECRET_KEY=campusfind-super-secret-key-change-in-production-2026-secure
+      - COLLEGE_EMAIL_DOMAIN=example.edu
+      - REDIS_URL=redis://redis:6379/0
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    volumes:
+      - ./backend/uploads:/app/uploads
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: campusfind_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  redis_data:
