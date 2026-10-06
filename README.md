@@ -225,11 +225,11 @@ tests/test_state_machine.py::test_dispute_transitions PASSED
 
 ---
 
-## 10. SDE Portfolio Talking Points
+## 10. Key Engineering & Architecture Highlights
 
-When discussing **CampusFind** in software engineering interviews, highlight:
+Key technical innovations and architectural standards engineered into **CampusFind**:
 1. **Clean Architecture Separation**: Pure division between API routers, domain services, database models, and repository queries.
-2. **Deterministic Multi-Factor Scoring**: Weighted mathematical model combining Jaccard token overlap, temporal decay, and spatial proximity.
+2. **Deterministic Multi-Factor Scoring Engine**: Weighted mathematical model combining Jaccard token overlap, temporal decay, and spatial proximity.
 3. **Finite State Machine Rigor**: Explicit transition validation matrix preventing invalid lifecycle leaps (e.g. `RETURNED -> POSSIBLE_MATCH`).
 4. **Concurrency & Atomicity**: Handling race conditions when multiple students attempt to claim a found item simultaneously.
-5. **Bidirectional WebSockets**: Integrated real-time temporary private chat and notification streams without third-party external dependencies.
+5. **Bidirectional WebSockets**: Native real-time temporary private chat and notification streams without third-party external dependencies.
