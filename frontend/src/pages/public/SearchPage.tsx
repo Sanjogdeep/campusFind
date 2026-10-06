@@ -54,9 +54,11 @@ export const SearchPage: React.FC = () => {
         itemService.searchLost(params),
         itemService.searchFound(params),
       ]);
-      setLostItems(lost);
-      setFoundItems(found);
+      setLostItems(Array.isArray(lost) ? lost : []);
+      setFoundItems(Array.isArray(found) ? found : []);
     } catch (e) {
+      setLostItems([]);
+      setFoundItems([]);
     } finally {
       setLoading(false);
     }

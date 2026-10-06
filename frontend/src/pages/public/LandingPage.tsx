@@ -32,9 +32,11 @@ export const LandingPage: React.FC = () => {
         itemService.searchLost(),
         itemService.searchFound(),
       ]);
-      setRecentLost(lost.slice(0, 3));
-      setRecentFound(found.slice(0, 3));
+      setRecentLost(Array.isArray(lost) ? lost.slice(0, 3) : []);
+      setRecentFound(Array.isArray(found) ? found.slice(0, 3) : []);
     } catch (e) {
+      setRecentLost([]);
+      setRecentFound([]);
     } finally {
       setLoading(false);
     }

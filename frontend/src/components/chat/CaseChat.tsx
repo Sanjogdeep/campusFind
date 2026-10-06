@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Message, User } from '../../types';
 import { caseService } from '../../services/caseService';
+import { API_BASE } from '../../services/api';
 import { useToast } from '../../contexts/ToastContext';
 import { Send, ShieldAlert, Lock, AlertTriangle } from 'lucide-react';
 
@@ -38,7 +39,8 @@ export const CaseChat: React.FC<CaseChatProps> = ({
     if (!token) return;
 
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const wsUrl = `${protocol}//${window.location.host}/ws/cases/${caseId}?token=${token}`;
+    const backendHost = API_BASE.startsWith('http') ? new URL(API_BASE).host : window.location.host;
+    const wsUrl = `${protocol}//${backendHost}/ws/cases/${caseId}?token=${token}`;
     const ws = new WebSocket(wsUrl);
 
     ws.onmessage = (event) => {

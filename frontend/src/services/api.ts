@@ -1,6 +1,22 @@
 import axios from 'axios';
 
-const API_BASE = '/api/v1';
+let rawBase = ((import.meta as any).env?.VITE_API_URL as string) || '';
+if (!rawBase) {
+  if (typeof window !== 'undefined' && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
+    rawBase = 'https://campusfind-backend-1cjp.onrender.com/api/v1';
+  } else {
+    rawBase = '/api/v1';
+  }
+}
+
+if (rawBase.endsWith('/')) {
+  rawBase = rawBase.slice(0, -1);
+}
+if (!rawBase.endsWith('/api/v1') && !rawBase.startsWith('/api/v1')) {
+  rawBase = `${rawBase}/api/v1`;
+}
+
+export const API_BASE = rawBase;
 
 export const api = axios.create({
   baseURL: API_BASE,
