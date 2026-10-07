@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import L from 'leaflet';
 import { CampusZoneActivity } from '../../types';
 import { itemService } from '../../services/itemService';
@@ -11,6 +12,7 @@ import {
   ExternalLink,
   Compass,
   CheckCircle,
+  Calendar,
 } from 'lucide-react';
 
 // Lovely Professional University, Phagwara, Punjab geographic center
@@ -325,6 +327,13 @@ export const CampusMapVisualizer: React.FC = () => {
                     <p className="text-[11px] text-emerald-800 leading-snug mt-0.5">
                       Monitored university common area with security cameras and regular campus security presence. Recommended for scheduling handover meetings.
                     </p>
+                    <Link
+                      to="/dashboard"
+                      className="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition shadow-xs"
+                    >
+                      <Calendar className="w-3.5 h-3.5" />
+                      Book Meeting in Active Case &rarr;
+                    </Link>
                   </div>
                 </div>
               ) : (
