@@ -61,29 +61,37 @@ def seed_database():
                 db.add(Category(name=name, icon=icon, is_active=True))
 
         # 3. Lovely Professional University (LPU Phagwara) Campus Locations
-        # Exact block numbering aligned with official LPU campus layout
+        # Exact block numbering verified with official LPU campus layout
         lpu_locations = [
             (
-                "Block 37 (Central Library)",
-                "ZONE_ACADEMIC",
-                "Dr. Baldev Raj Mittal 9-story Central Library entrance foyer with security turnstiles & CCTV",
-                45.0, 42.0,
-                31.2535, 75.7028,
-                True,
+                "Block 14 (Mittal School of Business)",
+                "ZONE_MANAGEMENT",
+                "Mittal School of Business (MSB) main academic building, business lecture theatres, seminar halls, and departmental library",
+                66.0, 38.0,
+                31.2545, 75.7040,
+                False,
             ),
             (
                 "Block 30 (Central Admission Block)",
                 "ZONE_ADMISSION",
                 "Central admission foyer, counseling desks, university reception, and main administrative hall",
-                42.0, 56.0,
+                44.0, 58.0,
                 31.2529, 75.7031,
+                True,
+            ),
+            (
+                "Block 37 (Central Library)",
+                "ZONE_ACADEMIC",
+                "Dr. Baldev Raj Mittal 9-story Central Library entrance foyer with security turnstiles & CCTV",
+                44.0, 40.0,
+                31.2535, 75.7028,
                 True,
             ),
             (
                 "Block 15 (UniMall Food Court & Atrium)",
                 "ZONE_MALL",
                 "UniMall ground floor central atrium near food counters, student utility stores, and hospitality labs",
-                58.0, 36.0,
+                60.0, 35.0,
                 31.2548, 75.7042,
                 True,
             ),
@@ -91,7 +99,7 @@ def seed_database():
                 "Block 13 (Division of Student Welfare - DSW)",
                 "ZONE_DSW",
                 "DSW headquarters, student organizations, cultural affairs, and campus grievance help desk",
-                46.0, 50.0,
+                46.0, 48.0,
                 31.2532, 75.7034,
                 True,
             ),
@@ -99,39 +107,55 @@ def seed_database():
                 "Block 34 (School of Computer Science & Engineering)",
                 "ZONE_ENGINEERING",
                 "CSE academic department, AI/ML computing laboratories, and lecture halls near Eastern Gate",
-                34.0, 44.0,
+                26.0, 48.0,
                 31.2534, 75.7019,
                 False,
             ),
             (
-                "Block 32 & 33 (Computer Science & Engineering)",
-                "ZONE_ENGINEERING",
-                "CSE computing laboratories, lecture complex, and faculty cabins",
-                36.0, 38.0,
-                31.2541, 75.7019,
+                "Block 32 (Division of Student Relationship & Distance Education)",
+                "ZONE_ADMIN",
+                "Division of Student Relationship, International Affairs, and LPU Online & Distance Education hub",
+                30.0, 38.0,
+                31.2536, 75.7022,
                 False,
+            ),
+            (
+                "Block 33 (Computer Science Labs & Physics)",
+                "ZONE_ENGINEERING",
+                "CSE computing laboratories, physics labs, and smart academic classrooms",
+                28.0, 44.0,
+                31.2535, 75.7020,
+                False,
+            ),
+            (
+                "Block 35 (Shanti Devi Mittal Auditorium)",
+                "ZONE_CENTRAL",
+                "Grand university auditorium, convocation hall, cultural seminar hall, and guest reception",
+                34.0, 46.0,
+                31.2533, 75.7024,
+                True,
             ),
             (
                 "Block 36 (School of Electronics & Electrical Engineering)",
                 "ZONE_ENGINEERING",
-                "EEE & Robotics labs, circuit fabrication suites, and university accounts department",
-                37.0, 48.0,
+                "SEEE electronics laboratories, robotics research setups, circuit fabrication, and university accounts division",
+                30.0, 52.0,
                 31.2532, 75.7021,
                 False,
             ),
             (
-                "Block 38 (School of Computer Applications)",
+                "Block 38 (Division of Research & Development - R&D)",
                 "ZONE_ENGINEERING",
-                "Computer applications labs, software testing studios, and computing lecture halls",
-                43.0, 39.0,
+                "Division of R&D, PhD research centre, SAP enterprise lab, and advanced CSE computing halls",
+                38.0, 38.0,
                 31.2538, 75.7026,
                 False,
             ),
             (
-                "Block 25-29 (Mittal School of Business & AO)",
-                "ZONE_MANAGEMENT",
-                "School of Business, administrative offices (AO), conference board room, and basic sciences",
-                38.0, 28.0,
+                "Block 25-29 (School of Bioengineering & Biosciences & AO)",
+                "ZONE_ACADEMIC",
+                "Bioengineering, Biotechnology, Microbiology labs, basic sciences, and Administrative Office (AO) complex",
+                35.0, 25.0,
                 31.2550, 75.7025,
                 False,
             ),
@@ -139,39 +163,39 @@ def seed_database():
                 "Block 3 (UniHospital & Health Centre)",
                 "ZONE_HEALTH",
                 "On-campus 24/7 healthcare center reception, outpatient clinic, and pharmacy dispensary",
-                48.0, 22.0,
+                50.0, 18.0,
                 31.2558, 75.7035,
                 True,
-            ),
-            (
-                "Block 14 (Polytechnic & Mechanical Workshops)",
-                "ZONE_ENGINEERING",
-                "Polytechnic lecture halls, mechanical engineering workshops, and robotics labs",
-                48.0, 52.0,
-                31.2530, 75.7037,
-                False,
             ),
             (
                 "Block 1 (School of Fashion Design & Historic Gate)",
                 "ZONE_ACADEMIC",
                 "School of Fashion Design and historic foundation wing near Main Gate 1",
-                62.0, 20.0,
+                70.0, 20.0,
                 31.2558, 75.7048,
                 False,
             ),
             (
                 "Block 4 (School of Pharmaceutical Sciences)",
                 "ZONE_ACADEMIC",
-                "School of Pharmaceutical Sciences, clinical labs, and medicinal chemistry facilities",
-                52.0, 24.0,
+                "School of Pharmaceutical Sciences, clinical labs, and medicinal chemistry research facilities",
+                55.0, 24.0,
                 31.2552, 75.7038,
+                False,
+            ),
+            (
+                "Block 6 (School of Architecture & Design)",
+                "ZONE_ACADEMIC",
+                "Architecture drafting studios, interior design ateliers, and construction material display halls",
+                52.0, 32.0,
+                31.2544, 75.7032,
                 False,
             ),
             (
                 "Baldev Raj Mittal Unipolis",
                 "ZONE_CENTRAL",
                 "Central open-air amphitheater, stage promenade, and major university event hub",
-                52.0, 48.0,
+                54.0, 46.0,
                 31.2539, 75.7039,
                 True,
             ),
@@ -179,7 +203,7 @@ def seed_database():
                 "Shanti Devi Mittal Indoor Sports Complex",
                 "ZONE_SPORTS",
                 "Olympic-standard indoor sports arena, badminton courts, swimming pool, and gym lobby",
-                26.0, 68.0,
+                22.0, 70.0,
                 31.2515, 75.7012,
                 True,
             ),
@@ -187,7 +211,7 @@ def seed_database():
                 "Main Gate 1 & Security Station (G.T. Road)",
                 "ZONE_SECURITY",
                 "24/7 manned security pavilion, visitor pass desk, and boom barriers at primary highway entrance",
-                68.0, 16.0,
+                75.0, 15.0,
                 31.2562, 75.7051,
                 True,
             ),
@@ -195,7 +219,7 @@ def seed_database():
                 "Law Gate & Western Market Station",
                 "ZONE_SECURITY",
                 "Western campus pedestrian gate, commercial shopping arcade, and student transit hub",
-                14.0, 60.0,
+                10.0, 55.0,
                 31.2524, 75.6958,
                 True,
             ),
@@ -203,15 +227,15 @@ def seed_database():
                 "BH-4 & GH-2 Courtyard Hub",
                 "ZONE_RESIDENTIAL",
                 "Boys & Girls hostel common quad, outdoor cafeteria, and student tuck shop",
-                72.0, 62.0,
+                75.0, 62.0,
                 31.2520, 75.7055,
                 False,
             ),
             (
-                "Block 55-58 (The Village - Civil & Agri Engineering)",
+                "Block 55-58 (The Village - Civil & Mechanical Workshops)",
                 "ZONE_ENGINEERING",
-                "Civil engineering concrete labs, agricultural fields, surveying studios, and workshop cluster",
-                60.0, 75.0,
+                "Heavy engineering machine shops, civil concrete testing labs, carpentry, and agricultural engineering fields",
+                60.0, 78.0,
                 31.2510, 75.7045,
                 False,
             ),
@@ -219,22 +243,33 @@ def seed_database():
 
         # Migrate any previous records with outdated names
         rename_migrations = [
+            ("%Block 14%", "Block 14 (Mittal School of Business)"),
             ("%Block 34-38%", "Block 37 (Central Library)"),
             ("%Central Library%", "Block 37 (Central Library)"),
             ("%UniMall%", "Block 15 (UniMall Food Court & Atrium)"),
             ("%UniHospital%", "Block 3 (UniHospital & Health Centre)"),
             ("%Block 30%", "Block 30 (Central Admission Block)"),
             ("%Block 13%", "Block 13 (Division of Student Welfare - DSW)"),
-            ("%Block 14%", "Block 14 (Polytechnic & Mechanical Workshops)"),
-            ("%Block 25%", "Block 25-29 (Mittal School of Business & AO)"),
-            ("%Block 32%", "Block 32 & 33 (Computer Science & Engineering)"),
+            ("%Block 25%", "Block 25-29 (School of Bioengineering & Biosciences & AO)"),
+            ("%Block 32%", "Block 32 (Division of Student Relationship & Distance Education)"),
+            ("%Block 38%", "Block 38 (Division of Research & Development - R&D)"),
+            ("%Block 55-58%", "Block 55-58 (The Village - Civil & Mechanical Workshops)"),
         ]
         for pattern, new_name in rename_migrations:
-            old_recs = db.query(CampusLocation).filter(CampusLocation.name.ilike(pattern)).all()
-            for old_rec in old_recs:
-                if old_rec.name != new_name:
-                    old_rec.name = new_name
-            db.commit()
+            existing_target = db.query(CampusLocation).filter(CampusLocation.name == new_name).first()
+            matching_recs = db.query(CampusLocation).filter(CampusLocation.name.ilike(pattern)).all()
+            for rec in matching_recs:
+                if rec.name == new_name:
+                    continue
+                if existing_target and existing_target.id != rec.id:
+                    db.query(LostItem).filter(LostItem.location_id == rec.id).update({LostItem.location_id: existing_target.id})
+                    db.query(FoundItem).filter(FoundItem.location_id == rec.id).update({FoundItem.location_id: existing_target.id})
+                    db.delete(rec)
+                    db.commit()
+                else:
+                    rec.name = new_name
+                    existing_target = rec
+                    db.commit()
 
         for name, zone, desc, mx, my, lat, lng, is_meet in lpu_locations:
             loc = db.query(CampusLocation).filter(CampusLocation.name == name).first()
