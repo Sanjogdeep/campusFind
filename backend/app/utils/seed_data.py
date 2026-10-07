@@ -61,30 +61,14 @@ def seed_database():
                 db.add(Category(name=name, icon=icon, is_active=True))
 
         # 3. Lovely Professional University (LPU Phagwara) Campus Locations
-        # Real GPS Coordinates anchored around G.T. Road, Phagwara: 31.2536° N, 75.7037° E
+        # Exact block numbering aligned with official LPU campus layout
         lpu_locations = [
             (
-                "Central Library (Block 34-38 Foyer)",
+                "Block 37 (Central Library)",
                 "ZONE_ACADEMIC",
-                "LPU 9-story Central Library entrance foyer with security turnstiles & CCTV",
+                "Dr. Baldev Raj Mittal 9-story Central Library entrance foyer with security turnstiles & CCTV",
                 45.0, 42.0,
                 31.2535, 75.7028,
-                True,
-            ),
-            (
-                "UniMall Food Court & Atrium",
-                "ZONE_MALL",
-                "UniMall ground floor central atrium near food counters and student stores",
-                58.0, 36.0,
-                31.2548, 75.7042,
-                True,
-            ),
-            (
-                "Baldev Raj Mittal Unipolis",
-                "ZONE_CENTRAL",
-                "Central open-air amphitheater and event promenade",
-                52.0, 48.0,
-                31.2539, 75.7039,
                 True,
             ),
             (
@@ -96,6 +80,14 @@ def seed_database():
                 True,
             ),
             (
+                "Block 15 (UniMall Food Court & Atrium)",
+                "ZONE_MALL",
+                "UniMall ground floor central atrium near food counters, student utility stores, and hospitality labs",
+                58.0, 36.0,
+                31.2548, 75.7042,
+                True,
+            ),
+            (
                 "Block 13 (Division of Student Welfare - DSW)",
                 "ZONE_DSW",
                 "DSW headquarters, student organizations, cultural affairs, and campus grievance help desk",
@@ -104,7 +96,55 @@ def seed_database():
                 True,
             ),
             (
-                "Block 14 (Polytechnic & Mechanical Engineering)",
+                "Block 34 (School of Computer Science & Engineering)",
+                "ZONE_ENGINEERING",
+                "CSE academic department, AI/ML computing laboratories, and lecture halls near Eastern Gate",
+                34.0, 44.0,
+                31.2534, 75.7019,
+                False,
+            ),
+            (
+                "Block 32 & 33 (Computer Science & Engineering)",
+                "ZONE_ENGINEERING",
+                "CSE computing laboratories, lecture complex, and faculty cabins",
+                36.0, 38.0,
+                31.2541, 75.7019,
+                False,
+            ),
+            (
+                "Block 36 (School of Electronics & Electrical Engineering)",
+                "ZONE_ENGINEERING",
+                "EEE & Robotics labs, circuit fabrication suites, and university accounts department",
+                37.0, 48.0,
+                31.2532, 75.7021,
+                False,
+            ),
+            (
+                "Block 38 (School of Computer Applications)",
+                "ZONE_ENGINEERING",
+                "Computer applications labs, software testing studios, and computing lecture halls",
+                43.0, 39.0,
+                31.2538, 75.7026,
+                False,
+            ),
+            (
+                "Block 25-29 (Mittal School of Business & AO)",
+                "ZONE_MANAGEMENT",
+                "School of Business, administrative offices (AO), conference board room, and basic sciences",
+                38.0, 28.0,
+                31.2550, 75.7025,
+                False,
+            ),
+            (
+                "Block 3 (UniHospital & Health Centre)",
+                "ZONE_HEALTH",
+                "On-campus 24/7 healthcare center reception, outpatient clinic, and pharmacy dispensary",
+                48.0, 22.0,
+                31.2558, 75.7035,
+                True,
+            ),
+            (
+                "Block 14 (Polytechnic & Mechanical Workshops)",
                 "ZONE_ENGINEERING",
                 "Polytechnic lecture halls, mechanical engineering workshops, and robotics labs",
                 48.0, 52.0,
@@ -112,62 +152,88 @@ def seed_database():
                 False,
             ),
             (
-                "Main Gate 1 & Security Station (G.T. Road)",
-                "ZONE_SECURITY",
-                "24/7 manned security pavilion at the primary highway entrance",
-                68.0, 16.0,
-                31.2562, 75.7051,
+                "Block 1 (School of Fashion Design & Historic Gate)",
+                "ZONE_ACADEMIC",
+                "School of Fashion Design and historic foundation wing near Main Gate 1",
+                62.0, 20.0,
+                31.2558, 75.7048,
+                False,
+            ),
+            (
+                "Block 4 (School of Pharmaceutical Sciences)",
+                "ZONE_ACADEMIC",
+                "School of Pharmaceutical Sciences, clinical labs, and medicinal chemistry facilities",
+                52.0, 24.0,
+                31.2552, 75.7038,
+                False,
+            ),
+            (
+                "Baldev Raj Mittal Unipolis",
+                "ZONE_CENTRAL",
+                "Central open-air amphitheater, stage promenade, and major university event hub",
+                52.0, 48.0,
+                31.2539, 75.7039,
                 True,
             ),
             (
                 "Shanti Devi Mittal Indoor Sports Complex",
                 "ZONE_SPORTS",
-                "Main sports arena reception and badminton lobby",
+                "Olympic-standard indoor sports arena, badminton courts, swimming pool, and gym lobby",
                 26.0, 68.0,
                 31.2515, 75.7012,
                 True,
             ),
             (
-                "Block 32 & 33 (Computer Science & Engineering)",
-                "ZONE_ENGINEERING",
-                "CSE computing laboratories and lecture complex",
-                36.0, 38.0,
-                31.2541, 75.7019,
-                False,
+                "Main Gate 1 & Security Station (G.T. Road)",
+                "ZONE_SECURITY",
+                "24/7 manned security pavilion, visitor pass desk, and boom barriers at primary highway entrance",
+                68.0, 16.0,
+                31.2562, 75.7051,
+                True,
             ),
             (
-                "Block 25-28 (Mittal School of Business)",
-                "ZONE_MANAGEMENT",
-                "Business and economics department classrooms",
-                38.0, 28.0,
-                31.2550, 75.7025,
-                False,
+                "Law Gate & Western Market Station",
+                "ZONE_SECURITY",
+                "Western campus pedestrian gate, commercial shopping arcade, and student transit hub",
+                14.0, 60.0,
+                31.2524, 75.6958,
+                True,
             ),
             (
                 "BH-4 & GH-2 Courtyard Hub",
                 "ZONE_RESIDENTIAL",
-                "Boys & Girls hostel common quad and dining canteen",
+                "Boys & Girls hostel common quad, outdoor cafeteria, and student tuck shop",
                 72.0, 62.0,
                 31.2520, 75.7055,
                 False,
             ),
             (
-                "UniHospital Reception",
-                "ZONE_HEALTH",
-                "On-campus healthcare center front desk",
-                48.0, 22.0,
-                31.2558, 75.7035,
-                True,
+                "Block 55-58 (The Village - Civil & Agri Engineering)",
+                "ZONE_ENGINEERING",
+                "Civil engineering concrete labs, agricultural fields, surveying studios, and workshop cluster",
+                60.0, 75.0,
+                31.2510, 75.7045,
+                False,
             ),
         ]
 
-        # Migrate any previous Block 30 record to Central Admission Block
-        old_b30 = db.query(CampusLocation).filter(CampusLocation.name.ilike("%Block 30%")).first()
-        if old_b30:
-            old_b30.name = "Block 30 (Central Admission Block)"
-            old_b30.description = "Central admission foyer, counseling desks, university reception, and main administrative hall"
-            old_b30.zone_code = "ZONE_ADMISSION"
-            old_b30.is_meeting_point = True
+        # Migrate any previous records with outdated names
+        rename_migrations = [
+            ("%Block 34-38%", "Block 37 (Central Library)"),
+            ("%Central Library%", "Block 37 (Central Library)"),
+            ("%UniMall%", "Block 15 (UniMall Food Court & Atrium)"),
+            ("%UniHospital%", "Block 3 (UniHospital & Health Centre)"),
+            ("%Block 30%", "Block 30 (Central Admission Block)"),
+            ("%Block 13%", "Block 13 (Division of Student Welfare - DSW)"),
+            ("%Block 14%", "Block 14 (Polytechnic & Mechanical Workshops)"),
+            ("%Block 25%", "Block 25-29 (Mittal School of Business & AO)"),
+            ("%Block 32%", "Block 32 & 33 (Computer Science & Engineering)"),
+        ]
+        for pattern, new_name in rename_migrations:
+            old_recs = db.query(CampusLocation).filter(CampusLocation.name.ilike(pattern)).all()
+            for old_rec in old_recs:
+                if old_rec.name != new_name:
+                    old_rec.name = new_name
             db.commit()
 
         for name, zone, desc, mx, my, lat, lng, is_meet in lpu_locations:

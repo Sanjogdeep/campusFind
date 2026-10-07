@@ -44,6 +44,15 @@ export const CampusMapVisualizer: React.FC = () => {
     }
   };
 
+  const formatZoneLabel = (name: string) => {
+    if (name.includes('(') && name.includes(')')) {
+      const blockPart = name.substring(0, name.indexOf('(')).trim();
+      const descPart = name.substring(name.indexOf('(') + 1, name.indexOf(')')).trim();
+      return `${blockPart}: ${descPart}`;
+    }
+    return name;
+  };
+
   // Initialize and update Leaflet Map
   useEffect(() => {
     if (viewMode !== 'leaflet' || !mapContainerRef.current) return;
@@ -82,37 +91,39 @@ export const CampusMapVisualizer: React.FC = () => {
       const lat = zone.latitude || 31.2536;
       const lng = zone.longitude || 75.7037;
 
-      // Custom HTML Marker Icon
+      // Custom HTML Marker Icon with clear block and facility names
       const isSafe = zone.is_meeting_point;
       const count = zone.total_activity;
+      const labelText = formatZoneLabel(zone.name);
       const markerHtml = `
         <div style="
-          display: flex;
+          display: inline-flex;
           align-items: center;
-          gap: 4px;
+          gap: 5px;
           background: ${isSafe ? '#059669' : '#0284c7'};
           color: white;
-          padding: 4px 8px;
+          padding: 4px 10px;
           border-radius: 9999px;
-          font-family: system-ui, sans-serif;
+          font-family: system-ui, -apple-system, sans-serif;
           font-size: 11px;
           font-weight: 700;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.3);
           border: 2px solid white;
           white-space: nowrap;
           cursor: pointer;
+          transform: translate(-50%, -50%);
         ">
           ${isSafe ? '🛡️' : '📍'}
-          <span>${zone.name.split('(')[0].trim()}</span>
-          ${count > 0 ? `<span style="background: rgba(0,0,0,0.3); padding: 1px 5px; border-radius: 9999px; font-size: 10px;">${count}</span>` : ''}
+          <span>${labelText}</span>
+          ${count > 0 ? `<span style="background: rgba(0,0,0,0.3); padding: 1px 6px; border-radius: 9999px; font-size: 10px;">${count}</span>` : ''}
         </div>
       `;
 
       const customIcon = L.divIcon({
         className: 'lpu-custom-marker',
         html: markerHtml,
-        iconSize: [120, 28],
-        iconAnchor: [60, 14],
+        iconSize: [0, 0],
+        iconAnchor: [0, 0],
       });
 
       const marker = L.marker([lat, lng], { icon: customIcon }).addTo(map);
@@ -223,7 +234,7 @@ export const CampusMapVisualizer: React.FC = () => {
             }`}
           >
             {zone.is_meeting_point && '🛡️ '}
-            {zone.name.split('(')[0].trim()}
+            {formatZoneLabel(zone.name)}
           </button>
         ))}
       </div>
@@ -284,7 +295,7 @@ export const CampusMapVisualizer: React.FC = () => {
                     }`}
                   >
                     {zone.is_meeting_point && <Shield className="w-3.5 h-3.5 flex-shrink-0" />}
-                    <span>{zone.name.split('(')[0].trim()}</span>
+                    <span>{formatZoneLabel(zone.name)}</span>
                     <span className="bg-black/25 px-1.5 py-0.5 rounded-full text-[10px]">
                       {zone.total_activity}
                     </span>
