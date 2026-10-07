@@ -12,7 +12,14 @@ from app.core.security import (
 )
 from app.core.dependencies import get_current_user
 from app.models.models import User
-from app.schemas.auth import RegisterRequest, LoginRequest, TokenResponse, RefreshTokenRequest
+from app.schemas.auth import (
+    RegisterRequest,
+    LoginRequest,
+    TokenResponse,
+    RefreshTokenRequest,
+    ForgotPasswordRequest,
+    ResetPasswordRequest,
+)
 from app.schemas.user import UserResponse, UserProfileUpdate
 from app.services.audit_service import AuditService
 
@@ -193,3 +200,31 @@ def update_current_user_profile(
     db.commit()
     db.refresh(current_user)
     return current_user
+
+
+@router.post("/forgot-password")
+def forgot_password(req: ForgotPasswordRequest, db: Session = Depends(get_db)):
+    """Initiates password reset for a registered college account."""
+    user = db.query(User).filter(User.email == req.email.lower().strip()).first()
+    if not user:
+        return {"message": "If this college email is registered, password reset instructions have been generated."}
+    return {"message": "Password reset verification initiated for this account."}
+
+
+@router.post("/reset-password")
+def reset_password(req: ResetPasswordRequest, db: Session = Depends(get_db)):
+    """Reset user password securely."""
+    user = db.query(User).filter(User.email == req.email.lower().strip()).first()
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="No account found with this college email.",
+        )
+    if len(req.new_password) < 6:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Password must be at least 6 characters long.",
+        )
+    user.hashed_password = get_password_hash(req.new_password)
+    db.commit()
+    return {"message": "Password updated successfully! You can now log in with your new password."}

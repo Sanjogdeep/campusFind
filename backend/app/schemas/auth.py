@@ -28,3 +28,13 @@ class TokenResponse(BaseModel):
 
 class RefreshTokenRequest(BaseModel):
     refresh_token: str
+
+
+class ForgotPasswordRequest(BaseModel):
+    email: EmailStr
+
+
+class ResetPasswordRequest(BaseModel):
+    email: EmailStr
+    new_password: str = Field(..., min_length=6, max_length=100)
+    reset_code: Optional[str] = None

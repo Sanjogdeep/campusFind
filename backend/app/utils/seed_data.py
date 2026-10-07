@@ -88,12 +88,28 @@ def seed_database():
                 True,
             ),
             (
-                "Block 30 (Division of Student Welfare - DSW)",
-                "ZONE_ADMIN",
-                "Main student administration foyer and help desks",
+                "Block 30 (Central Admission Block)",
+                "ZONE_ADMISSION",
+                "Central admission foyer, counseling desks, university reception, and main administrative hall",
                 42.0, 56.0,
                 31.2529, 75.7031,
                 True,
+            ),
+            (
+                "Block 13 (Division of Student Welfare - DSW)",
+                "ZONE_DSW",
+                "DSW headquarters, student organizations, cultural affairs, and campus grievance help desk",
+                46.0, 50.0,
+                31.2532, 75.7034,
+                True,
+            ),
+            (
+                "Block 14 (Polytechnic & Mechanical Engineering)",
+                "ZONE_ENGINEERING",
+                "Polytechnic lecture halls, mechanical engineering workshops, and robotics labs",
+                48.0, 52.0,
+                31.2530, 75.7037,
+                False,
             ),
             (
                 "Main Gate 1 & Security Station (G.T. Road)",
@@ -144,6 +160,15 @@ def seed_database():
                 True,
             ),
         ]
+
+        # Migrate any previous Block 30 record to Central Admission Block
+        old_b30 = db.query(CampusLocation).filter(CampusLocation.name.ilike("%Block 30%")).first()
+        if old_b30:
+            old_b30.name = "Block 30 (Central Admission Block)"
+            old_b30.description = "Central admission foyer, counseling desks, university reception, and main administrative hall"
+            old_b30.zone_code = "ZONE_ADMISSION"
+            old_b30.is_meeting_point = True
+            db.commit()
 
         for name, zone, desc, mx, my, lat, lng, is_meet in lpu_locations:
             loc = db.query(CampusLocation).filter(CampusLocation.name == name).first()
