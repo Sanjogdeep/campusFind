@@ -2,6 +2,13 @@
 
 > **Direct Peer Handover with Finder-Retention, Deterministic Multi-Factor Matching, and Cryptographically Verified One-Time Tokens.**
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-campusfind--lpu.vercel.app-0284c7?style=for-the-badge&logo=vercel&logoColor=white)](https://campusfind-lpu.vercel.app/)
+[![API Docs](https://img.shields.io/badge/API_Docs-Swagger_UI-059669?style=for-the-badge&logo=fastapi&logoColor=white)](https://campusfind-backend-1cjp.onrender.com/docs)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-campusFind-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Sanjogdeep/campusFind)
+
+🔗 **Live Application:** [https://campusfind-lpu.vercel.app/](https://campusfind-lpu.vercel.app/)  
+📖 **Interactive API Docs:** [https://campusfind-backend-1cjp.onrender.com/docs](https://campusfind-backend-1cjp.onrender.com/docs)
+
 CampusFind transforms collegiate lost property recovery. Unlike legacy campus systems that rely on centralized security desks or unmonitored bulletin boards, **the person who finds an item retains possession of it safely**. CampusFind identifies the possible owner using configurable multi-factor deterministic matching, coordinates safe private verification, schedules a meeting at an administrator-designated campus public safe spot, verifies the handover with a single-use 6-digit OTP/QR token, and closes the case.
 
 ---
