@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { useToast } from '../../contexts/ToastContext';
-import { Compass, Mail, Lock, ArrowRight, KeyRound, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { Compass, Mail, Lock, ArrowRight, KeyRound, ArrowLeft, CheckCircle2, GraduationCap, ShieldCheck, Crown } from 'lucide-react';
 import { api } from '../../services/api';
 
 export const LoginPage: React.FC = () => {
@@ -247,6 +247,63 @@ export const LoginPage: React.FC = () => {
                 <ArrowRight className="w-4 h-4" />
               </button>
             </form>
+
+            {/* Quick 1-Click Demo Accounts for Recruiter & Testing */}
+            <div className="pt-4 border-t border-slate-100">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  Quick Demo Logins (1-Click)
+                </span>
+                <span className="text-[10px] text-slate-400">Auto-fills credentials</span>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEmail('alice@lpu.in');
+                    setPassword('StudentPass123!');
+                  }}
+                  className="p-2.5 bg-slate-50 hover:bg-sky-50 hover:border-sky-300 border border-slate-200 rounded-xl text-left transition group"
+                >
+                  <div className="flex items-center gap-1 text-slate-700 group-hover:text-sky-700 font-bold text-xs mb-0.5">
+                    <GraduationCap className="w-3.5 h-3.5 text-sky-600" />
+                    <span>Student</span>
+                  </div>
+                  <div className="text-[10px] text-slate-400 truncate">alice@lpu.in</div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEmail('admin@lpu.in');
+                    setPassword('AdminPass123!');
+                  }}
+                  className="p-2.5 bg-slate-50 hover:bg-purple-50 hover:border-purple-300 border border-slate-200 rounded-xl text-left transition group"
+                >
+                  <div className="flex items-center gap-1 text-slate-700 group-hover:text-purple-700 font-bold text-xs mb-0.5">
+                    <ShieldCheck className="w-3.5 h-3.5 text-purple-600" />
+                    <span>Admin</span>
+                  </div>
+                  <div className="text-[10px] text-slate-400 truncate">admin@lpu.in</div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEmail('superadmin@lpu.in');
+                    setPassword('AdminPass123!');
+                  }}
+                  className="p-2.5 bg-slate-50 hover:bg-amber-50 hover:border-amber-300 border border-slate-200 rounded-xl text-left transition group"
+                >
+                  <div className="flex items-center gap-1 text-slate-700 group-hover:text-amber-700 font-bold text-xs mb-0.5">
+                    <Crown className="w-3.5 h-3.5 text-amber-600" />
+                    <span>Super</span>
+                  </div>
+                  <div className="text-[10px] text-slate-400 truncate">superadmin@...</div>
+                </button>
+              </div>
+            </div>
 
             <div className="text-center text-xs text-slate-500 pt-2 border-t border-slate-100">
               Don’t have an account yet?{' '}
